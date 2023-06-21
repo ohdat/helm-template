@@ -23,8 +23,11 @@ imagePullSecrets:
 - name: "regcred"
 
 env:
-  MJ_SALAI_TOKEN:
-    value: MTAxNzAyMDc2OTMzMjYzNzczMA.GkqNTM.ncD24VmmYKqhF9k9Wom_Rp2-TmHwrIgP6PcSOU
+  enabled: false
+  name: MJ_SALAI_TOKEN
+  confname: mjtoken
+  value: MJ_SALAI_TOKEN2
+
 
 nameOverride: ""
 fullnameOverride: ""

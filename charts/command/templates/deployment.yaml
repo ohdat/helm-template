@@ -34,11 +34,14 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.env.enabled }}
           env: 
-            {{- range $name, $item := .Values.env }}
-            - name: {{ $name }}
-              {{- $item | toYaml | nindent 14 }}
-            {{- end }}
+            - name: {{ .Values.env.name }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.env.confname }}
+                  key: {{ .Values.env.value }}
+          {{- end }}
           tty: true
           volumeMounts:
             {{- include "command.volumeMounts" . | nindent 12 }}
