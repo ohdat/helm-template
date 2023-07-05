@@ -74,6 +74,17 @@ entries:
     urls:
     - https://github.com/ohdat/helm-template/releases/download/grpc-1.1.5264102549/grpc-1.1.5264102549.tgz
     version: 1.1.5264102549
+  jobs:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-07-05T08:47:13.060158694Z"
+    description: A Helm chart for Kubernetes
+    digest: b2c54b2b89a2d273e3a0f7c6b00d146ad5e8169abc687e78efb0501ad85bb193
+    name: jobs
+    type: application
+    urls:
+    - https://github.com/ohdat/helm-template/releases/download/jobs-1.1.5462268141/jobs-1.1.5462268141.tgz
+    version: 1.1.5462268141
   service:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -127,4 +138,4 @@ entries:
     urls:
     - https://github.com/ohdat/helm-template/releases/download/website-1.1.5263986429/website-1.1.5263986429.tgz
     version: 1.1.5263986429
-generated: "2023-06-21T05:57:51.978497071Z"
+generated: "2023-07-05T08:47:13.060182494Z"
