@@ -5,48 +5,44 @@ metadata:
   labels:
     app: {{ include "jobs.fullname" . }}
 spec:
-#  schedule: "{{ .Values.schedule }}"
-  Template:
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 12 }}
+      {{- end }}
+      labels:
+        app: {{ include "jobs.fullname" . }}
     spec:
-      parallelism: {{ .Values.replicaCount }}
-      template:
-        metadata:
-          {{- with .Values.podAnnotations }}
-          annotations:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
-          labels:
-            app: {{ include "jobs.fullname" . }}
-        spec:
-          {{- with .Values.imagePullSecrets }}
-          imagePullSecrets:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
-          serviceAccountName: {{ include "jobs.serviceAccountName" . }}
-          containers:
-          - name: {{ include "jobs.fullname" . }}
-            image: "{{ .Values.image.repository }}"
-            imagePullPolicy: {{ .Values.image.pullPolicy }}
-            volumeMounts:
-              {{- include "jobs.volumeMounts" . | nindent 14 }}
-            {{- with .Values.commandOverride }}
-            command:
-              {{- toYaml .| nindent 14  }}
-            {{- end }}
-            resources:
-              {{- toYaml .Values.resources | nindent 14 }}
-          restartPolicy: Never
-          volumes:
-            {{- include "jobs.volumes" . | nindent 12 }}
-          {{- with .Values.nodeSelector }}
-          nodeSelector:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
-          {{- with .Values.affinity }}
-          affinity:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
-          {{- with .Values.tolerations }}
-          tolerations:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 12 }}
+      {{- end }}
+      serviceAccountName: {{ include "jobs.serviceAccountName" . }}
+      containers:
+      - name: {{ include "jobs.fullname" . }}
+        image: "{{ .Values.image.repository }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        volumeMounts:
+          {{- include "jobs.volumeMounts" . | nindent 14 }}
+        {{- with .Values.commandOverride }}
+        command:
+          {{- toYaml .| nindent 14  }}
+        {{- end }}
+        resources:
+          {{- toYaml .Values.resources | nindent 14 }}
+      restartPolicy: Never
+      volumes:
+        {{- include "jobs.volumes" . | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 12 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 12 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 12 }}
+      {{- end }}
