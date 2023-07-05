@@ -1,12 +1,12 @@
 apiVersion: batch/v1
-kind: CronJob
+kind: Job
 metadata:
-  name: {{ include "cronjob.fullname" . }}
+  name: {{ include "jobs.fullname" . }}
   labels:
-    app: {{ include "cronjob.fullname" . }}
+    app: {{ include "jobs.fullname" . }}
 spec:
-  schedule: "{{ .Values.schedule }}"
-  jobTemplate:
+#  schedule: "{{ .Values.schedule }}"
+  jobsTemplate:
     spec:
       parallelism: {{ .Values.replicaCount }}
       template:
@@ -16,28 +16,28 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           labels:
-            app: {{ include "cronjob.fullname" . }}
+            app: {{ include "jobs.fullname" . }}
         spec:
           {{- with .Values.imagePullSecrets }}
           imagePullSecrets:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          serviceAccountName: {{ include "cronjob.serviceAccountName" . }}
+          serviceAccountName: {{ include "jobs.serviceAccountName" . }}
           containers:
-          - name: {{ include "cronjob.fullname" . }}
+          - name: {{ include "jobs.fullname" . }}
             image: "{{ .Values.image.repository }}"
             imagePullPolicy: {{ .Values.image.pullPolicy }}
             volumeMounts:
-              {{- include "cronjob.volumeMounts" . | nindent 14 }}
+              {{- include "jobs.volumeMounts" . | nindent 14 }}
             {{- with .Values.commandOverride }}
             command:
               {{- toYaml .| nindent 14  }}
             {{- end }}
             resources:
               {{- toYaml .Values.resources | nindent 14 }}
-          restartPolicy: OnFailure
+          restartPolicy: Never
           volumes:
-            {{- include "cronjob.volumes" . | nindent 12 }}
+            {{- include "jobs.volumes" . | nindent 12 }}
           {{- with .Values.nodeSelector }}
           nodeSelector:
             {{- toYaml . | nindent 12 }}

@@ -1,5 +1,5 @@
 {{- if .Values.volume.enabled }}
-{{- $name := include "cronjob.name" .}}
+{{- $name := include "jobs.name" .}}
 {{- range $key,$value := .Values.volume.options }}
 ---
 apiVersion: v1
