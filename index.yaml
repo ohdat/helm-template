@@ -77,6 +77,16 @@ entries:
   jobs:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-07-05T09:14:33.213252884Z"
+    description: A Helm chart for Kubernetes
+    digest: 3d18ce6b50b609b5d2da71c607e38f389a39aeb8b341f26ad15396cb1b449d3c
+    name: jobs
+    type: application
+    urls:
+    - https://github.com/ohdat/helm-template/releases/download/jobs-1.1.5462527529/jobs-1.1.5462527529.tgz
+    version: 1.1.5462527529
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-07-05T09:04:57.783812413Z"
     description: A Helm chart for Kubernetes
     digest: 61b0f00bf574a0ffb97b372953d8d0431e80a18ea44fd1cca25ec8a3bcb744fb
@@ -158,4 +168,4 @@ entries:
     urls:
     - https://github.com/ohdat/helm-template/releases/download/website-1.1.5263986429/website-1.1.5263986429.tgz
     version: 1.1.5263986429
-generated: "2023-07-05T09:04:57.783844713Z"
+generated: "2023-07-05T09:14:33.213286585Z"
