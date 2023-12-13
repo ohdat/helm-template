@@ -45,6 +45,16 @@ entries:
   cronjob:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-12-13T07:50:54.941328509Z"
+    description: A Helm chart for Kubernetes
+    digest: 726972173747ea844fd8d19d1ef7d5d473460b7f07b2b443ad974a4e9afa5f01
+    name: cronjob
+    type: application
+    urls:
+    - https://github.com/ohdat/helm-template/releases/download/cronjob-1.1.7192218304/cronjob-1.1.7192218304.tgz
+    version: 1.1.7192218304
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-06-14T07:13:33.465999868Z"
     description: A Helm chart for Kubernetes
     digest: 20f74632aa6ac7a3abc510f4c6f1784ea92c92d5188069365b97913e17fc0aa5
@@ -178,4 +188,4 @@ entries:
     urls:
     - https://github.com/ohdat/helm-template/releases/download/website-1.1.5263986429/website-1.1.5263986429.tgz
     version: 1.1.5263986429
-generated: "2023-11-02T09:07:09.31466012Z"
+generated: "2023-12-13T07:50:54.94136674Z"
