@@ -54,7 +54,7 @@ securityContext: {}
   # runAsUser: 1000
 
 volume:
-  enabled: true
+  enabled: false
   options: 
   - name: efs-sc
     path: /test
